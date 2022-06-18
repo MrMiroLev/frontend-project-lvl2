@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/mirolev98/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/mirolev98/frontend-project-lvl2/actions)",
-  "main": "index.js",
+  "main": "gendiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +21,8 @@
     "gendiff": "bin/gendiff.js"
   },
   "dependencies": {
-    "commander": "^9.3.0"
+    "commander": "^9.3.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^8.17.0",
