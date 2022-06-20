@@ -23,9 +23,12 @@ jobs:
         # https://github.com/actions/setup-node
         uses: actions/setup-node@v2
         # The Node.js version to configure
+        env:
+          PROJECT2_SECURE: ${{ secrets.HEXLET_PROJECT2_SECURE }}
         with:
           node-version: ${{ matrix.node-version }}
          #cache: 'npm'
       - run: make install
       - run: make lint
       - run: make test
+      - run: make test-coverage
