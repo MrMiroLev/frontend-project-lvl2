@@ -17,7 +17,7 @@ test('JSON', () => {
 });
 
 test('YAML', () => {
-  const data = readFile('file1.yaml');
+  const data = readFile('file1.yml');
   const result = parse(data, '.yaml');
   expect(result).toEqual(yaml.load(data));
 });
