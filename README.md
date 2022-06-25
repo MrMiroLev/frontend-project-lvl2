@@ -7,4 +7,4 @@
 
 ## Demo
 
-[![asciicast](https://asciinema.org/a/L1oTlk6g6cIIP3MAhUY8XGiR3.svg)](https://asciinema.org/a/L1oTlk6g6cIIP3MAhUY8XGiR3)
+[![asciicast](https://asciinema.org/a/iqbJBtLgAeIpbNLyFfAbUBSJp.svg)](https://asciinema.org/a/iqbJBtLgAeIpbNLyFfAbUBSJp)
