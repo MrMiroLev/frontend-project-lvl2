@@ -10,7 +10,10 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => rfs(getFixturePath(filename), 'utf-8');
 
-const expected = readFile('expected.txt');
+const expectedStylish = readFile('stylish.txt');
+const expectedPlain = readFile('plain.txt');
+const expectedJson = readFile('json.txt');
+const expectedWrong = 'Format "other" is not defined.';
 
 const json1 = getFixturePath('file1.json');
 const json2 = getFixturePath('file2.json');
@@ -23,7 +26,27 @@ const filePathsForTest = [
   ['JSON + YAML', json1, yaml2],
 ];
 
-describe.each(filePathsForTest)('genDiff', (ext, filePath1, filePath2) => {
-  const actual = genDiff(filePath1, filePath2);
-  test(`${ext}`, () => expect(actual).toEqual(expected));
+describe.each(filePathsForTest)('stylish', (ext, filePath1, filePath2) => {
+  const actual = genDiff(filePath1, filePath2, 'stylish');
+  test(`${ext}`, () => expect(actual).toEqual(expectedStylish));
+});
+
+test('plain', () => {
+  const actual = genDiff(json1, yaml2, 'plain');
+  expect(actual).toEqual(expectedPlain);
+});
+
+test('json', () => {
+  const actual = genDiff(json1, yaml2, 'json');
+  expect(actual).toEqual(expectedJson);
+});
+
+test('default format', () => {
+  const actual = genDiff(json1, json2);
+  expect(actual).toEqual(expectedStylish);
+});
+
+test('wrong format', () => {
+  const actual = genDiff(json1, json2, 'other');
+  expect(actual).toEqual(expectedWrong);
 });
