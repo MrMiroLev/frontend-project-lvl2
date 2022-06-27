@@ -8,6 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getFilePath = (filename) => path.join(__dirname, '..', filename);
 const readFile = (filename) => rfs(getFixturePath(filename), 'utf-8');
 
 const expectedStylish = readFile('stylish.txt');
@@ -15,10 +16,10 @@ const expectedPlain = readFile('plain.txt');
 const expectedJson = readFile('json.txt');
 const expectedWrong = 'Format "other" is not defined.';
 
-const json1 = getFixturePath('file1.json');
-const json2 = getFixturePath('file2.json');
-const yaml1 = getFixturePath('file1.yml');
-const yaml2 = getFixturePath('file2.yaml');
+const json1 = getFilePath('file1.json');
+const json2 = getFilePath('file2.json');
+const yaml1 = getFilePath('file1.yml');
+const yaml2 = getFilePath('file2.yaml');
 
 const filePathsForTest = [
   ['JSON', json1, json2],
