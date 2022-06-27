@@ -7,8 +7,8 @@ import parse from '../src/parsers.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const getFilePath = (filename) => path.join(__dirname, '..', filename);
-const readFile = (filename) => rfs(getFilePath(filename), 'utf-8');
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const readFile = (filename) => rfs(getFixturePath(filename), 'utf-8');
 
 test('JSON', () => {
   const data = readFile('file1.json');
