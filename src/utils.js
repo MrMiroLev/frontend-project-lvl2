@@ -6,6 +6,7 @@ const getExt = (file) => _.trimStart(path.extname(file), '.');
 
 const sort = (coll) => _.sortBy(coll);
 const hasKey = (obj, key) => _.has(obj, key);
+const getValue = (obj, key) => _.get(obj, key);
 const isPrimitive = (value) => !_.isObject(value);
 const isEqual = (value1, value2) => value1 === value2;
 const isString = (data) => typeof data === 'string';
@@ -16,5 +17,5 @@ const normalizeValue = (value) => {
 };
 
 export {
-  getPath, getExt, sort, hasKey, isPrimitive, isEqual, isString, normalizeValue,
+  getPath, getExt, sort, hasKey, getValue, isPrimitive, isEqual, isString, normalizeValue,
 };

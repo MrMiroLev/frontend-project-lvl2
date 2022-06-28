@@ -1,10 +1,11 @@
-import _ from 'lodash';
 import {
-  sort, hasKey, isPrimitive, isEqual,
+  sort, hasKey, getValue, isPrimitive, isEqual,
 } from './utils.js';
 
 const buildUnchangedTree = (node) => {
-  if (isPrimitive(node)) return node;
+  if (isPrimitive(node)) {
+    return node;
+  }
   return sort(Object.entries(node))
     .map(([key, val]) => ({ key, status: 'unchanged', value: buildUnchangedTree(val) }));
 };
@@ -13,10 +14,14 @@ const buildDiffTree = (node1, node2) => {
   const allKeys = sort(Object.keys({ ...node1, ...node2 }));
 
   const result = allKeys.map((key) => {
-    const [val1, val2] = [_.get(node1, key), _.get(node2, key)];
+    const [val1, val2] = [getValue(node1, key), getValue(node2, key)];
 
-    if (!hasKey(node1, key)) return { key, status: 'added', value: buildUnchangedTree(val2) };
-    if (!hasKey(node2, key)) return { key, status: 'removed', value: buildUnchangedTree(val1) };
+    if (!hasKey(node1, key)) {
+      return { key, status: 'added', value: buildUnchangedTree(val2) };
+    }
+    if (!hasKey(node2, key)) {
+      return { key, status: 'removed', value: buildUnchangedTree(val1) };
+    }
     if (!isEqual(val1, val2)) {
       if (isPrimitive(val1) || isPrimitive(val2)) {
         return {
