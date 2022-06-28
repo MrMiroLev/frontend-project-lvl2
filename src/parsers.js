@@ -1,3 +1,10 @@
 import yaml from 'js-yaml';
 
-export default (data, ext) => ((ext === '.yml' || ext === '.yaml') ? yaml.load(data) : JSON.parse(data));
+export default (data, ext) => {
+  switch (ext) {
+    case 'json':
+      return JSON.parse(data);
+    default:
+      return yaml.load(data);
+  }
+};

@@ -2,7 +2,7 @@ import path from 'path';
 import _ from 'lodash';
 
 const getPath = (file) => path.resolve(file);
-const getExt = (file) => path.extname(file);
+const getExt = (file) => _.trimStart(path.extname(file), '.');
 
 const sort = (coll) => _.sortBy(coll);
 const hasKey = (obj, key) => _.has(obj, key);
