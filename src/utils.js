@@ -1,8 +1,10 @@
 import path from 'path';
+import { readFileSync } from 'fs';
 import _ from 'lodash';
 
 const getPath = (file) => path.resolve(file);
 const getExt = (file) => _.trimStart(path.extname(file), '.');
+const readFile = (file) => readFileSync(getPath(file), 'utf8');
 
 const sort = (coll) => _.sortBy(coll);
 const hasKey = (obj, key) => _.has(obj, key);
@@ -17,5 +19,5 @@ const normalizeValue = (value) => {
 };
 
 export {
-  getPath, getExt, sort, hasKey, getValue, isPrimitive, isEqual, isString, normalizeValue,
+  getPath, getExt, readFile, sort, hasKey, getValue, isPrimitive, isEqual, isString, normalizeValue,
 };
