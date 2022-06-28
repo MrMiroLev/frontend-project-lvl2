@@ -4,6 +4,7 @@ import _ from 'lodash';
 const getPath = (file) => path.resolve(file);
 const getExt = (file) => path.extname(file);
 
+const sort = (coll) => _.sortBy(coll);
 const hasKey = (obj, key) => _.has(obj, key);
 const isPrimitive = (value) => !_.isObject(value);
 const isEqual = (value1, value2) => value1 === value2;
@@ -15,5 +16,5 @@ const normalizeValue = (value) => {
 };
 
 export {
-  getPath, getExt, hasKey, isPrimitive, isEqual, isString, normalizeValue,
+  getPath, getExt, sort, hasKey, isPrimitive, isEqual, isString, normalizeValue,
 };
