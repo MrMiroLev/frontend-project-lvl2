@@ -13,8 +13,12 @@ const isPrimitive = (value) => !_.isObject(value);
 const isEqual = (value1, value2) => value1 === value2;
 const isString = (data) => typeof data === 'string';
 const normalizeValue = (value) => {
-  if (isString(value)) return `'${value}'`;
-  if (isPrimitive(value)) return `${value}`;
+  if (isString(value)) {
+    return `'${value}'`;
+  }
+  if (isPrimitive(value)) {
+    return `${value}`;
+  }
   return '[complex value]';
 };
 

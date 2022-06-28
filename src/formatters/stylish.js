@@ -18,17 +18,14 @@ export default (data, spacesCount = 4, replacer = ' ') => {
       key, status, value, oldValue, newValue,
     }) => {
       switch (status) {
-        case 'added':
-          return `${plusIndent}${key}: ${iter(value, depth + 1)}`;
-        case 'removed':
-          return `${minusIndent}${key}: ${iter(value, depth + 1)}`;
+        case 'added': return `${plusIndent}${key}: ${iter(value, depth + 1)}`;
+        case 'removed': return `${minusIndent}${key}: ${iter(value, depth + 1)}`;
         case 'changed':
           return [
             `${minusIndent}${key}: ${iter(oldValue, depth + 1)}`,
             `${plusIndent}${key}: ${iter(newValue, depth + 1)}`,
           ];
-        default:
-          return `${emptyIndent}${key}: ${iter(value, depth + 1)}`;
+        default: return `${emptyIndent}${key}: ${iter(value, depth + 1)}`;
       }
     });
 
