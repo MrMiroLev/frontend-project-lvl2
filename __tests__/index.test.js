@@ -13,7 +13,7 @@ const readFile = (filename) => rfs(getFixturePath(filename), 'utf-8');
 const expectedStylish = readFile('stylish.txt');
 const expectedPlain = readFile('plain.txt');
 const expectedJson = readFile('json.txt');
-const expectedWrong = 'Format "other" is not defined.';
+const expectedWrong = 'Format option "other" is not defined!';
 
 const json1 = getFixturePath('file1.json');
 const json2 = getFixturePath('file2.json');

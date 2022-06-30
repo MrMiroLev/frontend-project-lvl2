@@ -12,12 +12,12 @@ const readFile = (filename) => rfs(getFixturePath(filename), 'utf-8');
 
 test('JSON', () => {
   const data = readFile('file1.json');
-  const result = parse(data, '.json');
+  const result = parse(data, 'json');
   expect(result).toEqual(JSON.parse(data));
 });
 
 test('YAML', () => {
   const data = readFile('file1.yml');
-  const result = parse(data, '.yaml');
+  const result = parse(data, 'yml');
   expect(result).toEqual(yaml.load(data));
 });
