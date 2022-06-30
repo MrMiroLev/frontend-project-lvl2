@@ -7,6 +7,6 @@ export default (data, format) => {
     case 'stylish': return stylish(data);
     case 'plain': return plain(data);
     case 'json': return json(data);
-    default: return `Format "${format}" is not defined.`;
+    default: throw new Error(`Format option "${format}" is not defined!`);
   }
 };
