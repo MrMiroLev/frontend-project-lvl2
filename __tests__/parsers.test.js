@@ -16,8 +16,20 @@ test('JSON', () => {
   expect(result).toEqual(JSON.parse(data));
 });
 
-test('YAML', () => {
+test('YAML - yml variant', () => {
   const data = readFile('file1.yml');
   const result = parse(data, 'yml');
   expect(result).toEqual(yaml.load(data));
+});
+
+test('YAML - yaml variant', () => {
+  const data = readFile('file2.yaml');
+  const result = parse(data, 'yaml');
+  expect(result).toEqual(yaml.load(data));
+});
+
+test('Wrong extension', () => {
+  const data = readFile('json.txt');
+  const result = parse(data, 'txt');
+  expect(result).toEqual('Unknown extension format: "txt"!');
 });
