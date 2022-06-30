@@ -1,6 +1,9 @@
 import { isPrimitive } from '../utils.js';
 
-export default (data, spacesCount = 4, replacer = ' ') => {
+export default (data) => {
+  const spacesCount = 4;
+  const replacer = ' ';
+
   const iter = (currentData, depth) => {
     if (isPrimitive(currentData)) {
       return currentData;
