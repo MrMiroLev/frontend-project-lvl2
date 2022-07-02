@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/mirolev98/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/mirolev98/frontend-project-lvl2/actions)",
-  "main": "./src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/mirolev98/frontend-project-lvl2.git"
   },
-  "author": "",
+  "author": "Lev Kuzmin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mirolev98/frontend-project-lvl2/issues"
