@@ -1,14 +1,8 @@
-import { isPrimitive } from '../utils.js';
-
 export default (data) => {
   const spacesCount = 4;
   const replacer = ' ';
 
   const iter = (currentData, depth) => {
-    if (isPrimitive(currentData)) {
-      return currentData;
-    }
-
     const indentSize = spacesCount * depth;
     const emptyIndent = replacer.repeat(indentSize);
     const bracketIndent = replacer.repeat(indentSize - spacesCount);
@@ -21,14 +15,15 @@ export default (data) => {
       key, status, value, oldValue, newValue,
     }) => {
       switch (status) {
-        case 'added': return `${plusIndent}${key}: ${iter(value, depth + 1)}`;
-        case 'removed': return `${minusIndent}${key}: ${iter(value, depth + 1)}`;
+        case 'added': return `${plusIndent}${key}: ${value}`;
+        case 'removed': return `${minusIndent}${key}: ${value}`;
         case 'changed':
           return [
-            `${minusIndent}${key}: ${iter(oldValue, depth + 1)}`,
-            `${plusIndent}${key}: ${iter(newValue, depth + 1)}`,
+            `${minusIndent}${key}: ${oldValue}`,
+            `${plusIndent}${key}: ${newValue}`,
           ];
-        default: return `${emptyIndent}${key}: ${iter(value, depth + 1)}`;
+        case 'nested': return `${emptyIndent}${key}: ${iter(value, depth + 1)}`;
+        default: return `${emptyIndent}${key}: ${value}`;
       }
     });
 
